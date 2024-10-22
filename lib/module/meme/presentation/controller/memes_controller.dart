@@ -1,9 +1,6 @@
-import 'dart:convert';
-
 import 'package:get/get.dart';
 import 'package:myapp/module/meme/data/model/memes_model.dart';
-import 'package:myapp/domain/repo/urls.dart';
-import 'package:http/http.dart' as http;
+import 'package:myapp/module/meme/data/repository/memes_repository.dart';
 
 class MemesController extends GetxController {
   bool _isLoading = false;
@@ -13,26 +10,25 @@ class MemesController extends GetxController {
   List<Meme> get filteredMemes => _filteredMemes;
   List<Meme> get memes => _memes;
 
+  final MemeRepository _memeRepository = MemeRepository();
+
   @override
   void onInit() {
     super.onInit();
     fetchMemes();
   }
 
-  Future<bool> fetchMemes() async {
+  Future<void> fetchMemes() async {
     _isLoading = true;
     update();
-    final response = await http.get(Uri.parse(Urls.GET_MEMES));
-    if (response.statusCode == 200) {
-      _isLoading = false;
-      _memes = MemeResponse.fromJson(jsonDecode(response.body)).memes;
+    try {
+      _memes = await _memeRepository.fetchMemes();
       _filteredMemes = _memes;
-      update();
-      return true;
-    } else {
+    } catch (e) {
+      // Handle error (showing a message or logging it)
+    } finally {
       _isLoading = false;
       update();
-      return false;
     }
   }
 

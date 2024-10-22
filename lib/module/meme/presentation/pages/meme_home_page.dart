@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:myapp/module/controller/memes_controller.dart';
-import 'package:myapp/module/presentation/meme_details_page.dart';
+import 'package:myapp/module/meme/presentation/pages/meme_details_page.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});

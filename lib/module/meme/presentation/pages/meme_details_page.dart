@@ -5,7 +5,7 @@ import 'package:image_cropper/image_cropper.dart';
 import 'package:http/http.dart' as http;
 import 'package:path_provider/path_provider.dart';
 import 'package:permission_handler/permission_handler.dart'; // Ensure this is imported
-import 'package:myapp/data/models/meme_list_model.dart';
+import 'package:myapp/module/meme/data/model/memes_model.dart';
 
 class MemeDetailsPage extends StatelessWidget {
   final Meme meme;

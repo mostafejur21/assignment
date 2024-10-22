@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:myapp/module/controller/image_edit_controller.dart';
 import 'package:myapp/module/controller/memes_controller.dart';
-import 'package:myapp/module/presentation/home_page.dart';
+import 'package:myapp/module/meme/presentation/pages/meme_home_page.dart';
 
 void main() {
   runApp(const MyApp());

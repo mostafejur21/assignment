@@ -1,36 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:myapp/module/controller/image_edit_controller.dart';
-import 'package:myapp/module/controller/memes_controller.dart';
-import 'package:myapp/module/meme/presentation/pages/meme_home_page.dart';
+import 'core/application/app.dart';
 
 void main() {
   runApp(const MyApp());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  // This widget is the root of your application.
-  @override
-  Widget build(BuildContext context) {
-    return GetMaterialApp(
-      debugShowCheckedModeBanner: false,
-      initialBinding: SBindings(),
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
-      home: const HomePage(),
-    );
-  }
-}
-
-class SBindings extends Bindings {
-  @override
-  void dependencies() {
-    Get.lazyPut(() => MemesController());
-    Get.lazyPut(()=> ImageEditController);
-  }
-}

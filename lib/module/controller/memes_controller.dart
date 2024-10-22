@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:get/get.dart';
 import 'package:myapp/module/meme/data/model/memes_model.dart';
-import 'package:myapp/domain/repo/urls.dart';
+import 'package:myapp/core/services/urls/urls.dart';
 import 'package:http/http.dart' as http;
 
 class MemesController extends GetxController {

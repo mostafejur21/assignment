@@ -3,7 +3,7 @@ import 'dart:developer';
 import 'dart:io';
 
 import 'package:dio/dio.dart';
-import 'package:myapp/data/services/network_caller/network_response.dart';
+import 'package:myapp/core/services/network_caller/network_response.dart';
 
 class GetRequest {
   static Dio dio = Dio();

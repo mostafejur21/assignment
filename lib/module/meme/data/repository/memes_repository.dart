@@ -1,6 +1,6 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
-import 'package:myapp/domain/repo/urls.dart';
+import 'package:myapp/core/services/urls/urls.dart';
 import 'package:myapp/module/meme/data/model/memes_model.dart';
 
 class MemeRepository {

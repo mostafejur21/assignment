@@ -39,6 +39,8 @@ dependencies:
   dio: ^5.7.0
   get_cli: ^1.8.1
   get: ^4.6.6
+  image_cropper: ^8.0.2
+  image_picker: ^1.1.2
 
 dev_dependencies:
   flutter_test:

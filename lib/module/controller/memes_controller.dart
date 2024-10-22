@@ -1,9 +1,9 @@
 import 'dart:convert';
 
 import 'package:get/get.dart';
-import 'package:myapp/data/get_memes_repo.dart';
 import 'package:myapp/data/models/meme_list_model.dart';
 import 'package:myapp/domain/repo/urls.dart';
+import 'package:http/http.dart' as http;
 
 class MemesController extends GetxController {
   bool _isLoading = false;
@@ -17,20 +17,19 @@ class MemesController extends GetxController {
     fetchMemes();
   }
 
-  void fetchMemes() async {
+  Future<bool> fetchMemes() async {
     _isLoading = true;
     update();
-    ApiCaller().fetchMemes(urls: Urls.GET_MEMES).then((e) async {
-      if (e['status'] == 200) {
-        final data = jsonDecode(e['data']);
-        MemeResponse memeResponse = MemeResponse.fromJson(data);
-        _memes.assignAll(memeResponse.memes);
-        _isLoading = false;
-        update();
-      } else {
-        _isLoading = false;
-        update();
-      }
-    });
+    final response = await http.get(Uri.parse(Urls.GET_MEMES));
+    if(response.statusCode == 200){
+      _isLoading = false;
+      _memes = MemeResponse.fromJson(jsonDecode(response.body)).memes;
+      update();
+      return true;
+    }else{
+      _isLoading = false;
+      update();
+      return false;
+    }
   }
 }
